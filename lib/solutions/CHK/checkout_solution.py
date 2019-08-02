@@ -28,19 +28,24 @@ def checkout(skus):
     :return: an Integer representing the total checkout value of the items
     """
     total = 0
+
+    illegal_skus = [sku for sku in skus not in SKUS.keys()]
+    if illegal_skus:
+        return -1
+
     for sku in SPECIAL_OFFERS.keys():
         num_sku = skus.count(sku)
-        if num_sku % SPECIAL_OFFERS[sku]['amount'] == 0:
-            
-
-    for sku in skus:
-        try:
-            SKUS[sku]
-        except KeyError:
-            return -1
+        if num_sku > SPECIAL_OFFERS[sku]['amount']:
+            while num_sku % SPECIAL_OFFERS[sku]['amount'] != 0:
+                total += SKUS[sku]
+                num_sku -= 1
+            else:
+                multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
+                total += multiplier * SPECIAL_OFFERS[sku]['price']
 
 
     return total
+
 
 
 
