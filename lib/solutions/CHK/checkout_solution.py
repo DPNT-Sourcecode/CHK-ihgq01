@@ -1,10 +1,30 @@
 
+# R1
+# SKUS = {
+#     'A': 50,
+#     'B': 30,
+#     'C': 20,
+#     'D': 15
+# }
+#
+# SPECIAL_OFFERS = {
+#     'A': {
+#         'amount': 3,
+#         'price': 130
+#     },
+#     'B': {
+#         'amount': 2,
+#         'price': 45
+#     }
+# }
 
+# R2
 SKUS = {
     'A': 50,
     'B': 30,
     'C': 20,
-    'D': 15
+    'D': 15,
+    'E': 40
 }
 
 SPECIAL_OFFERS = {
@@ -50,11 +70,12 @@ def checkout(skus):
                 multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
                 total += multiplier * SPECIAL_OFFERS[sku]['price']
 
-    # Add remaining individual SKU totals 
+    # Add remaining individual SKU totals
     for sku in skus:
         total += SKUS[sku]
 
     return total
+
 
 
 
