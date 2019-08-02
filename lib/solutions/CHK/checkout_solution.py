@@ -135,8 +135,8 @@ SPECIAL_OFFERS = [
         'sku': 'U',
         'offers': [
             {
-                'amount': 3,
-                'price': 80,
+                'amount': 4,
+                'price': 120,
             }
         ]
     },
@@ -201,6 +201,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 

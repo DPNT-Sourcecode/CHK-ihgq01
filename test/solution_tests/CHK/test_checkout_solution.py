@@ -3,7 +3,7 @@ from solutions.CHK import checkout_solution
 
 
 def test_checkout_solution_illegal():
-    result = checkout_solution.checkout('AHDFE')
+    result = checkout_solution.checkout('954698379')
     assert result == -1
 
 
@@ -50,4 +50,15 @@ def test_checkout_solution_8():
 def test_checkout_solution_9():
     result = checkout_solution.checkout('FFFF')
     assert result == 30
+
+
+def test_checkout_solution_10():
+    result = checkout_solution.checkout('UUU')
+    assert result == 120
+
+
+def test_checkout_solution_11():
+    result = checkout_solution.checkout('UUUU')
+    assert result == 120
+
 
