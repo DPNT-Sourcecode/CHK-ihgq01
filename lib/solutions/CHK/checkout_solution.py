@@ -79,26 +79,24 @@ def checkout(skus):
 
             for special_offer in reversed(special_offers):
                 while num_sku >= special_offer['amount']:
+
                     multiplier = int(num_sku / special_offer['amount'])
                     total += multiplier * special_offer['price']
                     num_sku -= (multiplier * special_offer['amount'])
                     skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
-                    print("got a special offer init")
+
                     if special_offer.get('free', None):
-                        print("GOT ONE FREEEE")
                         free_sku = special_offer['free']
                         skus = skus.replace(free_sku, '', 1)
                 else:
                     continue
 
-
-    print("END OF SO , ", skus)
     # Add remaining individual SKU totals
     for sku in skus:
-        print("REMAING SKU ", sku)
         total += SKUS[sku]
 
     return total
+
 
 
 
