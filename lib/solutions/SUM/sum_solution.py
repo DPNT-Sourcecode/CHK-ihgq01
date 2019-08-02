@@ -7,4 +7,3 @@ def compute(x, y):
     :return: an Integer representing the sum of the two numbers
     """
     return x + y
-
