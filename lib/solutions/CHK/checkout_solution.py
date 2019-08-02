@@ -210,7 +210,7 @@ def checkout(skus):
                             inner_count = 0
                             if main_count >= (multiplier * special_offer['amount']):
                                 break
-                            while main_count >= (multiplier * special_offer['amount']) and inner_count <= _num:
+                            while main_count < (multiplier * special_offer['amount']) and inner_count < _num:
                                 skus = skus.replace(_sku, '', 1)
                                 inner_count += 1
                                 main_count += 1
@@ -231,5 +231,6 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
