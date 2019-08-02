@@ -38,7 +38,8 @@ def checkout(skus):
         print("SKU : ", sku)
         print("NUM IN SKUS : ", num_sku)
         if num_sku >= SPECIAL_OFFERS[sku]['amount']:
-            skus.replace(sku, '')
+            skus = skus.replace(sku, '')
+            print("REPLACING IN SKUS ", skus)
             while num_sku % SPECIAL_OFFERS[sku]['amount'] != 0:
                 print("MODULO DOes NOT EQUAL 0")
                 total += SKUS[sku]
@@ -55,4 +56,5 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
