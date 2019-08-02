@@ -29,7 +29,7 @@ def checkout(skus):
     """
     total = 0
 
-    illegal_skus = [sku for sku in skus not in SKUS.keys()]
+    illegal_skus = [sku for sku in skus if sku not in SKUS.keys()]
     if illegal_skus:
         return -1
 
@@ -48,8 +48,3 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
-
-
-
-
-
