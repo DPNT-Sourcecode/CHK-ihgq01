@@ -204,8 +204,10 @@ def checkout(skus):
                     if type(sku) == str:
                         skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
                     else:
-                        for _sku, _sku_num in zip(sku, num_sku_list):
-                            skus = skus.replace(_sku, '', _sku_num)
+                        for _sku, _num in zip(sku, num_sku_list):
+                            skus = skus.replace(_sku, '', _num)
+
+                    print("SKUS ", skus)
 
                     if special_offer.get('free', None):
                         free_sku = special_offer['free']
@@ -219,6 +221,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 

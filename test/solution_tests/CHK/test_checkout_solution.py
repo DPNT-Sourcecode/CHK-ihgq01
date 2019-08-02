@@ -71,3 +71,24 @@ def test_checkout_solution_13():
     result = checkout_solution.checkout('STT')
     assert result == 45
 
+
+def test_checkout_solution_14():
+    result = checkout_solution.checkout('SSSZ')
+    assert result == 65
+
+
+def test_checkout_solution_15():
+    result = checkout_solution.checkout('ZZZS')
+    assert result == 65
+
+
+def test_checkout_solution_16():
+    result = checkout_solution.checkout('STXS')
+    assert result == 65
+
+
+def test_checkout_solution_17():
+    result = checkout_solution.checkout('STXSTX')
+    assert result == 90
+
+
