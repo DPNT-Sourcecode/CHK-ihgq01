@@ -79,7 +79,7 @@ def checkout(skus):
 
             for special_offer in reversed(special_offers):
                 while num_sku >= special_offer['amount']:
-                    while num_sku % special_offer['amount'] != 0:
+                    if num_sku % special_offer['amount'] != 0:
                         total += SKUS[sku]
                         num_sku -= 1
                     else:
@@ -108,4 +108,5 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
