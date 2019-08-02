@@ -60,6 +60,15 @@ SPECIAL_OFFERS = [
                 'price': 45
             }
         ]
+    },
+    {
+        'sku': 'F',
+        'offers': [
+            {
+                'amount': 3,
+                'price': 20,
+            }
+        ]
     }
 
 ]
@@ -98,11 +107,10 @@ def checkout(skus):
                     num_sku -= (multiplier * special_offer['amount'])
                     skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
 
-                    print("MULTIPLE ", multiplier)
-                    print("AMOUNT OF SKU TO LOSE ", (multiplier * special_offer['amount']))
                     if special_offer.get('free', None):
                         free_sku = special_offer['free']
                         skus = skus.replace(free_sku, '', multiplier)
+
                 else:
                     continue
 
@@ -111,3 +119,4 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
