@@ -28,10 +28,16 @@ def checkout(skus):
     :return: an Integer representing the total checkout value of the items
     """
     total = 0
+    skus_list = skus.split('')
+    for sku in SPECIAL_OFFERS:
+        skus_list.count
     for sku in skus:
         try:
-            total += SKUS[sku]
+            SKUS[sku]
         except KeyError:
             return -1
+
+
     return total
+
 
