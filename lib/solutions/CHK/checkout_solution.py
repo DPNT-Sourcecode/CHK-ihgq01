@@ -187,7 +187,8 @@ def checkout(skus):
         if type(sku) == str:
             num_sku = skus.count(sku)
         else:
-            num_sku = sum([skus.count(_sku) for _sku in sku])
+            num_sku_list = [skus.count(_sku) for _sku in sku]
+            num_sku = sum(num_sku_list)
 
         # If there is a special offer available...
         if num_sku > 0:
@@ -200,7 +201,11 @@ def checkout(skus):
                     multiplier = int(num_sku / special_offer['amount'])
                     total += multiplier * special_offer['price']
                     num_sku -= (multiplier * special_offer['amount'])
-                    skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
+                    if type(sku) == str:
+                        skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
+                    else:
+                        for _sku, _sku_num in zip(sku, num_sku_list):
+                            skus = skus.replace(_sku, '', _sku_num)
 
                     if special_offer.get('free', None):
                         free_sku = special_offer['free']
@@ -214,5 +219,6 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
