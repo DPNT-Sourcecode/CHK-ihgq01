@@ -8,5 +8,6 @@ def hello(friend_name):
     :param friend_name: a String. Ignore for now.
     :return: a String containing a message
     """
-    return "Hello World"
+    return "Hello, World!"
+
 
