@@ -28,9 +28,11 @@ def checkout(skus):
     :return: an Integer representing the total checkout value of the items
     """
     total = 0
-    skus_list = skus.split('')
-    for sku in SPECIAL_OFFERS:
-        skus_list.count
+    for sku in SPECIAL_OFFERS.keys():
+        num_sku = skus.count(sku)
+        if num_sku % SPECIAL_OFFERS[sku]['amount'] == 0:
+            
+
     for sku in skus:
         try:
             SKUS[sku]
@@ -39,5 +41,6 @@ def checkout(skus):
 
 
     return total
+
 
 
