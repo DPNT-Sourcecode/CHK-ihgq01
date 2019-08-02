@@ -73,7 +73,7 @@ def checkout(skus):
     for sku, special_offers in SPECIAL_OFFERS.items():
         num_sku = skus.count(sku)
         # If there is a special offer available...
-        if num_sku:
+        if num_sku > 0:
             for special_offer in special_offers:
                 if num_sku >= special_offer['amount']:
                     # Remove from the main string as we will add to total here
@@ -92,6 +92,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 
