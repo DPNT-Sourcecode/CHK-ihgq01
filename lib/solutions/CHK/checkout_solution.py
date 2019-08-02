@@ -84,10 +84,12 @@ def checkout(skus):
                         num_sku -= 1
                     else:
                         # Calculate how many special offers can be used
-                        multiplier = num_sku / special_offer['amount']
+                        multiplier = int(num_sku / special_offer['amount'])
+                        print("multiplier ", multiplier)
                         total += multiplier * special_offer['price']
-                else:
-                    continue
+                        num_sku -= (multiplier * special_offer['amount'])
+                # else:
+                #     continue
 
             skus = skus.replace(sku, '')
 
@@ -108,5 +110,6 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
