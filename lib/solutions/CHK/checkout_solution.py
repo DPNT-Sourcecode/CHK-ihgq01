@@ -72,6 +72,7 @@ def checkout(skus):
     # Check for special offers first
     for sku, special_offers in SPECIAL_OFFERS.items():
         num_sku = skus.count(sku)
+        print("SKU ", sku, " NUM OF  ", num_sku)
         # If there is a special offer available...
         if num_sku > 0:
 
@@ -85,9 +86,11 @@ def checkout(skus):
                     num_sku -= (multiplier * special_offer['amount'])
                     skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
 
+                    print("MULTIPLE ", multiplier)
+                    print("AMOUNT OF SKU TO LOSE ", (multiplier * special_offer['amount']))
                     if special_offer.get('free', None):
                         free_sku = special_offer['free']
-                        skus = skus.replace(free_sku, '', 1)
+                        skus = skus.replace(free_sku, '', multiplier)
                 else:
                     continue
 
@@ -96,6 +99,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 

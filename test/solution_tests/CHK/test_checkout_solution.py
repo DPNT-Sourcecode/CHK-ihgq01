@@ -27,4 +27,20 @@ def test_checkout_solution_4():
     assert result == 180
 
 
+def test_checkout_solution_5():
+    result = checkout_solution.checkout('EEEEBB')
+    assert result == 160
+
+
+def test_checkout_solution_6():
+    result = checkout_solution.checkout('BEBEEE')
+    assert result == 160
+
+
+def test_checkout_solution_7():
+    result = checkout_solution.checkout('ABCDEABCDE')
+    assert result == 280
+
+
+
 
