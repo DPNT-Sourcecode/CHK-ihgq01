@@ -74,21 +74,38 @@ def checkout(skus):
         num_sku = skus.count(sku)
         # If there is a special offer available...
         if num_sku > 0:
-            for special_offer in special_offers:
-                if num_sku >= special_offer['amount']:
-                    # Remove from the main string as we will add to total here
-                    skus = skus.replace(sku, '')
-                    # Check for extra individual SKUs over the special offer
-                    while num_sku % SPECIAL_OFFERS[sku]['amount'] != 0:
+
+            spec_offer_amounts = [offer['amount'] for offer in reversed(special_offers)]
+
+            for special_offer in reversed(special_offers):
+                while num_sku >= special_offer['amount']:
+                    while num_sku % special_offer['amount'] != 0:
                         total += SKUS[sku]
                         num_sku -= 1
                     else:
                         # Calculate how many special offers can be used
-                        multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
-                        total += multiplier * SPECIAL_OFFERS[sku]['price']
+                        multiplier = num_sku / special_offer['amount']
+                        total += multiplier * special_offer['price']
+                else:
+                    continue
+
+            skus = skus.replace(sku, '')
+
+                # if num_sku >= special_offer['amount']:
+                #     # Remove from the main string as we will add to total here
+                #     skus = skus.replace(sku, '')
+                #     # Check for extra individual SKUs over the special offer
+                #     while num_sku % SPECIAL_OFFERS[sku]['amount'] != 0:
+                #         total += SKUS[sku]
+                #         num_sku -= 1
+                #     else:
+                #         # Calculate how many special offers can be used
+                #         multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
+                #         total += multiplier * SPECIAL_OFFERS[sku]['price']
 
     # Add remaining individual SKU totals
     for sku in skus:
         total += SKUS[sku]
 
     return total
+

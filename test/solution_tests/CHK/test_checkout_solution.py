@@ -15,3 +15,9 @@ def test_checkout_solution():
 def test_checkout_solution_2():
     result = checkout_solution.checkout('DBABA')
     assert result == 160
+
+
+def test_checkout_solution_3():
+    result = checkout_solution.checkout('AAAAAAAAA')
+    assert result == 350
+
