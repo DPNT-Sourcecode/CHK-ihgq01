@@ -60,5 +60,3 @@ def test_checkout_solution_10():
 def test_checkout_solution_11():
     result = checkout_solution.checkout('UUUU')
     assert result == 120
-
-
