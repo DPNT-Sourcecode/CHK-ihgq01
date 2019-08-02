@@ -84,9 +84,10 @@ def test_checkout_solution_15():
 
 def test_checkout_solution_16():
     result = checkout_solution.checkout('STXS')
-    assert result == 65
+    assert result == 62
 
 
 def test_checkout_solution_17():
     result = checkout_solution.checkout('STXSTX')
     assert result == 90
+

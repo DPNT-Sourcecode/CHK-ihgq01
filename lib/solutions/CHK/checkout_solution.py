@@ -31,7 +31,7 @@ SKUS = {
 # Must be in correct order
 SPECIAL_OFFERS = [
     {
-        'sku': ['S', 'T', 'X', 'Y', 'Z'],
+        'sku': ['Z', 'T', 'S', 'Y', 'X'],
         'offers': [
             {
                 'amount': 3,
@@ -206,12 +206,11 @@ def checkout(skus):
                         skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
                     else:
                         count = 0
-                        while count < (multiplier * special_offer['amount']):
-                            for _sku, _num in zip(sku, num_sku_list):
-                                skus = skus.replace(_sku, '', _num)
-                                count += _num
-                        else:
-                            continue
+                        for _sku, _num in zip(sku, num_sku_list):
+                            if count >= (multiplier * special_offer['amount']):
+                                break
+                            skus = skus.replace(_sku, '', _num)
+                            count += _num
 
                     print("SKUS ", skus)
 
@@ -227,3 +226,4 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
