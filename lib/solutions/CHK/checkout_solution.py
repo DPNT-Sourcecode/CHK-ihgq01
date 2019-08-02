@@ -27,31 +27,41 @@ SKUS = {
     'E': 40
 }
 
-SPECIAL_OFFERS = {
-    'A': [
-        {
-            'amount': 3,
-            'price': 130
-        },
-        {
-            'amount': 5,
-            'price': 200
-        }
-    ],
-    'B': [
-        {
-            'amount': 2,
-            'price': 45
-        }
-    ],
-    'E': [
-        {
-            'amount': 2,
-            'price': 80,
-            'free': 'B'
-        }
-    ]
-}
+SPECIAL_OFFERS = [
+    {
+        'sku': 'A',
+        'offer': [
+            {
+                'amount': 3,
+                'price': 130
+            },
+            {
+                'amount': 5,
+                'price': 200
+            }
+        ]
+    },
+    {
+        'sku': 'E',
+        'offer': [
+            {
+                'amount': 2,
+                'price': 80,
+                'free': 'B'
+            }
+        ]
+    },
+    {
+        'sku': 'B',
+        'offer': [
+            {
+                'amount': 2,
+                'price': 45
+            }
+        ]
+    }
+
+]
 
 
 # noinspection PyUnusedLocal
@@ -70,7 +80,8 @@ def checkout(skus):
         return -1
 
     # Check for special offers first
-    for sku, special_offers in SPECIAL_OFFERS.items():
+    for offer in SPECIAL_OFFERS:
+        sku = offer
         num_sku = skus.count(sku)
         print("SKU ", sku, " NUM OF  ", num_sku)
         # If there is a special offer available...
@@ -99,6 +110,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 
