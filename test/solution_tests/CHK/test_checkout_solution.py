@@ -22,3 +22,9 @@ def test_checkout_solution_3():
     assert result == 380
 
 
+def test_checkout_solution_4():
+    result = checkout_solution.checkout('AAEEB')
+    assert result == 180
+
+
+
