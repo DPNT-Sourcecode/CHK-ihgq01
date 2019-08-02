@@ -19,5 +19,6 @@ def test_checkout_solution_2():
 
 def test_checkout_solution_3():
     result = checkout_solution.checkout('AAAAAAAAA')
-    assert result == 350
+    assert result == 380
+
 

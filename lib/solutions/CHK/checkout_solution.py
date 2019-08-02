@@ -79,19 +79,18 @@ def checkout(skus):
 
             for special_offer in reversed(special_offers):
                 while num_sku >= special_offer['amount']:
-                    if num_sku % special_offer['amount'] != 0:
-                        total += SKUS[sku]
-                        num_sku -= 1
-                    else:
-                        # Calculate how many special offers can be used
-                        multiplier = int(num_sku / special_offer['amount'])
-                        print("multiplier ", multiplier)
-                        total += multiplier * special_offer['price']
-                        num_sku -= (multiplier * special_offer['amount'])
-                # else:
-                #     continue
-
-            skus = skus.replace(sku, '')
+                    # if num_sku % special_offer['amount'] != 0:
+                    #     total += SKUS[sku]
+                    #     num_sku -= 1
+                    # else:
+                    # Calculate how many special offers can be used
+                    multiplier = int(num_sku / special_offer['amount'])
+                    print("multiplier ", multiplier)
+                    total += multiplier * special_offer['price']
+                    num_sku -= (multiplier * special_offer['amount'])
+                    skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
+                else:
+                    continue
 
                 # if num_sku >= special_offer['amount']:
                 #     # Remove from the main string as we will add to total here
@@ -105,11 +104,14 @@ def checkout(skus):
                 #         multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
                 #         total += multiplier * SPECIAL_OFFERS[sku]['price']
 
+    print("END OF SO , ", skus)
     # Add remaining individual SKU totals
     for sku in skus:
+        print("REMAING SKU ", sku)
         total += SKUS[sku]
 
     return total
+
 
 
 
