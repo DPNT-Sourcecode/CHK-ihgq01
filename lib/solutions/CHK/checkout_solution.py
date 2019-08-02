@@ -42,9 +42,13 @@ def checkout(skus):
             else:
                 multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
                 total += multiplier * SPECIAL_OFFERS[sku]['price']
+            skus.replace(sku, '')
 
+    for sku in skus:
+        total += SKUS[sku]
 
     return total
+
 
 
 
