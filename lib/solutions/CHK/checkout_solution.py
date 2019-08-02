@@ -29,32 +29,32 @@ def checkout(skus):
     """
     total = 0
 
+    # If there are any illegal SKUs, we return -1
     illegal_skus = [sku for sku in skus if sku not in SKUS.keys()]
     if illegal_skus:
         return -1
 
+    # Check for special offers first
     for sku in SPECIAL_OFFERS.keys():
         num_sku = skus.count(sku)
-        print("SKU : ", sku)
-        print("NUM IN SKUS : ", num_sku)
+        # If there is a special offer available...
         if num_sku >= SPECIAL_OFFERS[sku]['amount']:
+            # Remove from the main string as we will add to total here
             skus = skus.replace(sku, '')
-            print("REPLACING IN SKUS ", skus)
+            # Check for extra individual SKUs over the special offer
             while num_sku % SPECIAL_OFFERS[sku]['amount'] != 0:
-                print("MODULO DOes NOT EQUAL 0")
                 total += SKUS[sku]
                 num_sku -= 1
             else:
-                print("MODULO DOES EQUAL 0")
+                # Calculate how many special offers can be used
                 multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
-                print("MULTILIER ", multiplier)
                 total += multiplier * SPECIAL_OFFERS[sku]['price']
 
-    print("TOTAL SO FAR ", total)
+    # Add remaining individual SKU totals 
     for sku in skus:
-        print("NORMAL SKU ADDING ", sku)
         total += SKUS[sku]
 
     return total
+
 
 
