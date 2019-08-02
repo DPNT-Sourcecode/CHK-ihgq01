@@ -24,7 +24,8 @@ SKUS = {
     'B': 30,
     'C': 20,
     'D': 15,
-    'E': 40
+    'E': 40,
+    'F': 10
 }
 
 # Must be in correct order
@@ -119,4 +120,5 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
