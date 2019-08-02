@@ -15,4 +15,3 @@ def test_checkout_solution():
 def test_checkout_solution_2():
     result = checkout_solution.checkout('DBABA')
     assert result == 160
-

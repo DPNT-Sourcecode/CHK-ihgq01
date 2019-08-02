@@ -92,9 +92,3 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
-
-
-
-
-
-
