@@ -205,12 +205,17 @@ def checkout(skus):
                     if type(sku) == str:
                         skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
                     else:
-                        count = 0
+                        main_count = 0
                         for _sku, _num in zip(sku, num_sku_list):
-                            if count >= (multiplier * special_offer['amount']):
+                            inner_count = 0
+                            if main_count >= (multiplier * special_offer['amount']):
                                 break
-                            skus = skus.replace(_sku, '', _num)
-                            count += _num
+                            while main_count >= (multiplier * special_offer['amount']) and inner_count <= _num:
+                                skus = skus.replace(_sku, '', 1)
+                                inner_count += 1
+                                main_count += 1
+                            else:
+                                continue
 
                     print("SKUS ", skus)
 
@@ -226,4 +231,5 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
