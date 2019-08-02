@@ -40,7 +40,3 @@ def test_checkout_solution_6():
 def test_checkout_solution_7():
     result = checkout_solution.checkout('ABCDEABCDE')
     assert result == 280
-
-
-
-
