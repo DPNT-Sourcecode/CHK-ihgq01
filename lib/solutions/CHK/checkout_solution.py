@@ -188,7 +188,7 @@ def checkout(skus):
             num_sku = skus.count(sku)
         else:
             num_sku = sum([skus.count(_sku) for _sku in sku])
-            
+
         # If there is a special offer available...
         if num_sku > 0:
 
@@ -214,4 +214,5 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 

@@ -60,3 +60,14 @@ def test_checkout_solution_10():
 def test_checkout_solution_11():
     result = checkout_solution.checkout('UUUU')
     assert result == 120
+
+
+def test_checkout_solution_12():
+    result = checkout_solution.checkout('STX')
+    assert result == 45
+
+
+def test_checkout_solution_13():
+    result = checkout_solution.checkout('STT')
+    assert result == 45
+
