@@ -189,6 +189,7 @@ def checkout(skus):
         else:
             num_sku_list = [skus.count(_sku) for _sku in sku]
             num_sku = sum(num_sku_list)
+            print("NUM SKU ", num_sku)
 
         # If there is a special offer available...
         if num_sku > 0:
@@ -205,7 +206,7 @@ def checkout(skus):
                         skus = skus.replace(sku, '', (multiplier * special_offer['amount']))
                     else:
                         for _sku, _num in zip(sku, num_sku_list):
-                            skus = skus.replace(_sku, '', _num)
+                            skus = skus.replace(_sku, '', multiplier)
 
                     print("SKUS ", skus)
 
@@ -221,6 +222,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 
