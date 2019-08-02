@@ -90,5 +90,3 @@ def test_checkout_solution_16():
 def test_checkout_solution_17():
     result = checkout_solution.checkout('STXSTX')
     assert result == 90
-
-
