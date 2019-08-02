@@ -10,7 +10,7 @@ SKUS = {
     'H': 10,
     'I': 35,
     'J': 60,
-    'K': 80,
+    'K': 70,
     'L': 90,
     'M': 15,
     'N': 40,
@@ -18,18 +18,27 @@ SKUS = {
     'P': 50,
     'Q': 30,
     'R': 50,
-    'S': 30,
+    'S': 20,
     'T': 20,
     'U': 40,
     'V': 50,
     'W': 20,
-    'X': 90,
-    'Y': 10,
-    'Z': 50
+    'X': 17,
+    'Y': 20,
+    'Z': 21
 }
 
 # Must be in correct order
 SPECIAL_OFFERS = [
+    {
+        'sku': ['S', 'T', 'X', 'Y', 'Z'],
+        'offers': [
+            {
+                'amount': 3,
+                'price': 45
+            }
+        ]
+    },
     {
         'sku': 'A',
         'offers': [
@@ -89,7 +98,7 @@ SPECIAL_OFFERS = [
         'offers': [
             {
                 'amount': 2,
-                'price': 150
+                'price': 120
             }
         ]
     },
@@ -175,7 +184,11 @@ def checkout(skus):
     for offer in SPECIAL_OFFERS:
         sku = offer['sku']
         special_offers = offer['offers']
-        num_sku = skus.count(sku)
+        if type(sku) == str:
+            num_sku = skus.count(sku)
+        else:
+            num_sku = sum([skus.count(_sku) for _sku in sku])
+            
         # If there is a special offer available...
         if num_sku > 0:
 
@@ -201,3 +214,4 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
