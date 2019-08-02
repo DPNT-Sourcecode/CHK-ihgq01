@@ -35,16 +35,24 @@ def checkout(skus):
 
     for sku in SPECIAL_OFFERS.keys():
         num_sku = skus.count(sku)
-        if num_sku > SPECIAL_OFFERS[sku]['amount']:
+        print("SKU : ", sku)
+        print("NUM IN SKUS : ", num_sku)
+        if num_sku >= SPECIAL_OFFERS[sku]['amount']:
+            skus.replace(sku, '')
             while num_sku % SPECIAL_OFFERS[sku]['amount'] != 0:
+                print("MODULO DOes NOT EQUAL 0")
                 total += SKUS[sku]
                 num_sku -= 1
             else:
+                print("MODULO DOES EQUAL 0")
                 multiplier = num_sku / SPECIAL_OFFERS[sku]['amount']
+                print("MULTILIER ", multiplier)
                 total += multiplier * SPECIAL_OFFERS[sku]['price']
-            skus.replace(sku, '')
 
+    print("TOTAL SO FAR ", total)
     for sku in skus:
+        print("NORMAL SKU ADDING ", sku)
         total += SKUS[sku]
 
     return total
+
