@@ -27,10 +27,11 @@ SKUS = {
     'E': 40
 }
 
+# Must be in correct order
 SPECIAL_OFFERS = [
     {
         'sku': 'A',
-        'offer': [
+        'offers': [
             {
                 'amount': 3,
                 'price': 130
@@ -43,7 +44,7 @@ SPECIAL_OFFERS = [
     },
     {
         'sku': 'E',
-        'offer': [
+        'offers': [
             {
                 'amount': 2,
                 'price': 80,
@@ -53,7 +54,7 @@ SPECIAL_OFFERS = [
     },
     {
         'sku': 'B',
-        'offer': [
+        'offers': [
             {
                 'amount': 2,
                 'price': 45
@@ -81,9 +82,9 @@ def checkout(skus):
 
     # Check for special offers first
     for offer in SPECIAL_OFFERS:
-        sku = offer
+        sku = offer['sku']
+        special_offers = offer['offers']
         num_sku = skus.count(sku)
-        print("SKU ", sku, " NUM OF  ", num_sku)
         # If there is a special offer available...
         if num_sku > 0:
 
@@ -110,6 +111,7 @@ def checkout(skus):
         total += SKUS[sku]
 
     return total
+
 
 
 
